@@ -1,0 +1,41 @@
+<ion-view view-title="Location" hide-nav-bar="false" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a class="button button-assertive" ng-class="{'disabled':!$root.bookData.company || $root.bookData.company.numBuildings > 0 && (!$root.bookData.building || $root.bookData.building.companyId != $root.bookData.company.id)}" href="#/app/book/vehicle">
+      Next
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">Where do you work?</h4>
+      <div class="list list-inset">
+        <div ng-repeat="company in companies">
+          <ion-radio class="item-dark" ng-value="company"
+                     ng-model="$root.bookData.company">
+            <img ng-src="{{company.logoFullUrl}}">
+          </ion-radio>
+          <a ng-if="company.numBuildings > 0 && $root.bookData.company.id == company.id" class="item item-body item-dark" modal-select ng-model="$root.bookData.building" options="companyBuildings(company.id)" modal-title="Select a building" header-footer-class="bar-dark" hide-reset="true">
+            <i class="fa fa-building" ng-if="$root.devicePlatform == 'android' || $root.devicePlatform == 'ios'"></i>
+            Building
+            <span class="item-note">
+              {{$root.bookData.building ? $root.bookData.building.name : "Select a building"}} &nbsp;>
+            </span>
+            <div class="option">
+                {{option.name}}
+            </div>
+          </a>
+        </div>
+
+      </div>
+    <!--a class="button button-assertive button-block" ng-class="{'disabled':!$root.bookData.company || $root.bookData.company.numBuildings > 0 && (!$root.bookData.building || $root.bookData.building.companyId != $root.bookData.company.id)}" href="#/app/book/vehicle">
+      Continue
+    </a-->
+
+      <a href="#/app/faq-bring" class="text-center" style="display:block; color:#FFF;">Your company is not listed?</a>
+    </div>
+  </div>
+  </ion-content>
+</ion-view>

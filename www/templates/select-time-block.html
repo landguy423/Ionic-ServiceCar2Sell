@@ -1,0 +1,30 @@
+<ion-modal-view id="select-time-block">
+  <ion-header-bar class="bar-dark">
+    <div class="buttons">
+      <button class="button button-positive" ng-disabled="scheduleDate <= todayStr(1)" ng-click="adjustDate(-1)"><i
+        class="icon ion-chevron-left"></i></button>
+    </div>
+    <h1 class="title">
+      <ionic-datepicker input-obj="datepickerObject">
+        {{scheduleDate | date : 'EEEE, MMM d, y'}}
+      </ionic-datepicker>
+    </h1>
+    <div class="buttons">
+      <button class="button button-positive" ng-click="adjustDate(1)"><i class="icon ion-chevron-right"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content style="background: #ddd">
+    <ion-list>
+      <ion-radio ng-model="scheduleTime" ng-value="timeBlock" ng-change="onTimeBlockChanged(timeBlock)"
+                 ng-disabled="timeBlock.status != 'Open'" ng-repeat="timeBlock in timeBlocks"
+                 ng-class="{'disabled': timeBlock.status != 'Open'}" ng-click="onTimeBlockClicked(timeBlock)">
+        {{timeBlock.timeRange}}
+      </ion-radio>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar class="bar-dark" style="text-align:center;">
+    <a ng-click="closeModal()" style="display:block; margin:5px auto; ">
+      Cancel
+    </a>
+  </ion-footer-bar>
+</ion-modal-view>

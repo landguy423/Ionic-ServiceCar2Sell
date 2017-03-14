@@ -1,0 +1,139 @@
+<ion-view view-title="Confirmed" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+  <ion-content style="background-image:url('img/greyzz.png')">
+    <div class="padding">
+      <p class="text-center">Your wash has been successfully scheduled.</p>
+      <div class="list" style="background:#FFF;">
+        <div class="list">
+
+          <item class="item">
+            Company
+            <span class="item-note">
+              {{bookData.company.name}}
+            </span>
+          </item>
+
+          <item class="item item-body" ng-if="bookData.building">
+            Building
+            <span class="item-note">
+              {{bookData.building.name}}
+            </span>
+          </item>
+
+          <item class="item">
+            Full name
+            <span class="item-note">
+              {{paymentInfo.lastName}} {{paymentInfo.firstName}}
+            </span>
+          </item>
+
+          <item class="item">
+            Email
+            <span class="item-note">
+              {{paymentInfo.email}}
+            </span>
+          </item>
+
+          <item class="item">
+            Phone
+            <span class="item-note">
+              {{paymentInfo.mobile}}
+            </span>
+          </item>
+
+          <item class="item">
+            Vehicle Make
+            <span class="item-note">
+              {{bookData.vMake}}
+            </span>
+          </item>
+
+          <item class="item">
+            Vehicle Model
+            <span class="item-note">
+              {{bookData.vModel}}
+            </span>
+          </item>
+
+          <item class="item">
+            Vehicle Year
+            <span class="item-note">
+              {{bookData.vYear}}
+            </span>
+          </item>
+
+          <item class="item">
+            Vehicle Size
+            <span class="item-note capitalized">
+              {{bookData.vehicleType | lowercase}}
+            </span>
+          </item>
+
+          <item class="item">
+            Primary Service
+            <span class="item-note">
+              {{bookData.careOption.name}}: ${{bookData.careOption.price}}
+            </span>
+          </item>
+
+          <item class="item">
+            Added Services
+            <span class="item-note">
+              <div ng-if="bookData.careOptionAddOns && bookData.careOptionAddOns.length > 0" ng-repeat="option in bookData.careOptionAddOns" class="text-right">
+                {{option.name}}: ${{option.price}}
+              </div>
+              <div ng-if="!bookData.careOptionAddOns || bookData.careOptionAddOns.length == 0">NONE</div>
+            </span>
+          </item>
+
+          <item class="item">
+            Date
+            <span class="item-note">
+              {{bookData.scheduleDateTime | amDateFormat:'ddd, MMM D[ at ]h:mm A'}}
+            </span>
+          </item>
+
+          <item class="item">
+            Subtotal
+            <span class="item-note">
+              {{totalPrice | currency}}
+            </span>
+          </item>
+          <item class="item">
+            Tax
+            <span class="item-note">
+              {{taxInfo.taxAmount | currency}}
+            </span>
+          </item>
+          <item class="item">
+            Grand Total
+            <span class="item-note">
+              {{taxInfo.finalAmount | currency}}
+            </span>
+          </item>
+          <item class="item">
+            Payment
+            <span class="item-note" ng-if="paymentInfo.paymentMethod == 'salon'">
+              Pay at the Salon
+            </span>
+            <span class="item-note" ng-if="paymentInfo.paymentMethod == 'membership'">
+              Pay with membership
+            </span>
+            <span class="item-note" ng-if="paymentInfo.paymentMethod == 'card'">
+              {{paymentInfo.ccType}} {{paymentInfo.ccNumberMasked}}
+            </span>
+          </item>
+          <item class="item" ng-if="paymentInfo.paymentMethod == 'membership' && paymentInfo.membershipId">
+            Membership ID
+            <span class="item-note">
+              {{paymentInfo.membershipId}}
+            </span>
+          </item>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

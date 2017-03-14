@@ -1,0 +1,24 @@
+<ion-view id="care-option-addons" view-title="Services" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a class="button button-assertive" ng-click="onNext()">
+      Continue
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="">
+      <h4 class="text-center">Select Additional Services</h4>
+      <div class="list">
+        <div ng-repeat="option in careOptions">
+          <ion-checkbox class="item-dark item-body" on-hold="option.showDesc = option.showDesc ? false : true" ng-model="option.selected">
+            {{option.name}}
+            <span class="item-note">
+              ${{option.price}}
+            </span>
+            <img ng-src="{{option.imgFullUrl}}" on-tap="option.showDesc = option.showDesc ? false : true">
+          </ion-checkbox>
+          <div class="item item-dark item-body description" ng-show="option.showDesc" ng-bind-html="option.description" ng-click="option.selected=option.selected?false:true" on-hold="option.showDesc = option.showDesc ? false : true"></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

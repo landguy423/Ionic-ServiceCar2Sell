@@ -1,0 +1,17 @@
+<ion-view id="payment-method" view-title="Payment Method">
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">Choose Payment Method</h4>
+
+      <a class="button button-assertive button-block" ng-if="isSalonSelected()" ng-click="setPaymentMethod('salon')">
+        Pay at the Salon
+      </a>
+      <a class="button button-assertive button-block" ng-click="setPaymentMethod('card')">
+        Pay Now
+      </a>
+      <a class="button button-assertive button-block" ng-click="setPaymentMethod('membership')">
+        Pay with membership
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

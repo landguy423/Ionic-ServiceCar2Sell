@@ -1,0 +1,251 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+$stable: #387ef5 !default;
+$dark: #000 !default;
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+// Fix font awesome issue on windows phone.
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../lib/font-awesome/fonts/fontawesome-webfont.eot');
+  src: url('../lib/font-awesome/fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../lib/font-awesome/fonts/fontawesome-webfont.woff2') format('woff2'), url('../lib/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), url('../lib/font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'), url('../lib/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.kittybg        {
+    background: url('../img/moulin.png');
+    background-attachment:fixed;
+    background-position: center;
+}
+ion-side-menu .item {
+  background:transparent !important;
+}
+
+.ionic_datepicker_modal .no_padding {
+  padding: 0;
+}
+
+.ionic-select-modal {
+  .bar {
+    padding: 0;
+  }
+  .button.button-stable {
+    @include button-style($button-assertive-bg, $button-assertive-border, $button-assertive-active-bg, $button-assertive-active-border, $button-assertive-text);
+    @include button-clear($button-assertive-bg);
+    @include button-outline($button-assertive-bg);
+
+    display: block;
+    clear: both;
+    width: 100%;
+
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+.item.item-dark {
+  border-color: #555;
+}
+.item.item-dark.active {
+  border-color: red;
+  border-width: 3px;
+}
+.item-radio.item-dark input:checked+.radio-content .item-content, .item-radio.item-dark .item-content    {
+  background-color: black;
+  color: white;
+}
+#care-options {
+  .item.item-dark {
+    padding-bottom: 8px;
+  }
+  .item-thumbnail-left {
+    min-height: 48px;
+    padding-left: 16px;
+    .item-body {
+      padding: 0;
+    }
+    .item-content {
+      min-height: 48px;
+      padding-right: 32px;
+      padding-left: 80px;
+      img {
+        height: auto;
+      }
+      i {
+        position: absolute;
+        top: 0;
+        right: 0;
+        //z-index: 3;
+        //visibility: hidden;
+        padding: 14px;
+        height: 100%;
+        font-size: 24px;
+      }
+    }
+  }
+}
+#care-option-addons {
+  .item.item-dark {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    img {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+    }
+    .item-content {
+      min-height: 48px;
+      white-space: normal;
+
+      .item-note {
+        position: absolute;
+        right: 70px;
+        top: 20px;
+      }
+    }
+  }
+  .item.item-dark.item-checkbox {
+    padding-right: 120px;
+  }
+  .item.item-dark.description {
+    padding-left: 60px;
+    border-width: 0;
+    padding-top: 0;
+  }
+}
+#select-time-block {
+  .item-radio.disabled .item-content {
+    background: #ddd;
+    text-decoration: line-through;
+  }
+}
+#schedule-key {
+  label {
+    padding: 0;
+    padding-top: 10px;
+  }
+  textarea {
+    height: 100px;
+  }
+  .item {
+    padding-right: 40px;
+  }
+  #key-other.item {
+    padding-right: 16px;
+  }
+  i.radio-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    //z-index: 3;
+    //visibility: hidden;
+    padding: 14px;
+    height: 100%;
+    font-size: 24px;
+  }
+}
+
+.item {
+  i.radio-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    //z-index: 3;
+    //visibility: hidden;
+    padding: 14px;
+    height: 100%;
+    font-size: 24px;
+  }
+}
+
+#vehicle-type {
+  .item h2 {
+    margin-top: 0;
+  }
+}
+
+ion-popover-view.fit {
+  height: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative;
+}
+
+.platform-android ion-popover-view.fit {
+  margin-top: 10px;
+}
+
+.platform-ios ion-popover-view.fit {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.capitalized { text-transform: capitalize; }
+
+
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+    margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+
+.no-errors {
+  border-bottom: 3px solid green;
+}
+/*
+.ionic_datepicker {
+  .pointer_events_none {
+    color: white !important;
+    background-color: white !important;
+  }
+}*/

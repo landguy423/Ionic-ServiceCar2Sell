@@ -1,0 +1,38 @@
+<ion-view id="vehicle-info" view-title="Vehicle Info">
+  <ion-nav-buttons side="right">
+    <a class="button button-assertive" ng-class="{'disabled':!data.vMake || !data.vModel || !data.vYear}" ng-click="onNext()">
+      Next
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">Vehicle Info</h4>
+      <div class="list" style="background:#FFF;">
+        <label class="item item-input item-select item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.vMake.$invalid, 'no-errors' : form.$submitted && form.vMake.$valid}">
+          <span class="input-label">Make</span>
+          <select name="vMake" ng-model="data.vMake" ng-options="make as make.name for make in makes track by make.id" required>
+          </select>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.vMake.$error" ng-messages="form.vMake.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-select item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.vModel.$invalid, 'no-errors' : form.$submitted && form.vModel.$valid}">
+          <span class="input-label">Model</span>
+          <select name="vModel" ng-model="data.vModel" ng-options="model as model.name for model in data.vMake.models track by model.id" required ng-disabled="!data.vMake">
+          </select>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.vModel.$error" ng-messages="form.vModel.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-select item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.vYear.$invalid, 'no-errors' : form.$submitted && form.vYear.$valid}">
+          <span class="input-label">Year</span>
+          <select name="vYear" ng-model="data.vYear" ng-options="year as year.year for year in data.vModel.years track by year.id" required ng-disabled="!data.vMake || !data.vModel">
+          </select>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.vYear.$error" ng-messages="form.vYear.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

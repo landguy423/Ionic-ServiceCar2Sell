@@ -1,0 +1,88 @@
+<ion-view view-title="Payment Details" cache-view="false">
+        <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+  <form name="form" novalidate="" ng-submit="">
+  <ion-content style="background-image:url('img/greyzz.png')">
+    <div class="padding">
+      <div class="button-bar">
+        <a class="button button-dark " href="#/app/profile" menu-close>Profile</a>
+        <a class="button button-dark active">Payment</a>
+      </div>
+    </div>
+    <div class="padding">
+      <div class="list" style="background:#FFF;">
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.membershipId.$invalid, 'no-errors' : form.$submitted && form.membershipId.$valid}">
+          <span class="input-label">Membership ID</span>
+          <input type="tel" name="membershipId" ng-model="paymentInfo.membershipId" mask="999999">
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.membershipId.$error" ng-messages="form.membershipId.$error">
+          <div class="error" ng-message="mask"><i class="ion-information-circled"></i> Invalid membership id</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.ccNumber.$invalid, 'no-errors' : form.$submitted && (form.ccNumber.$valid || !paymentInfo.editCCNumber && paymentInfo.ccNumberMasked)}">
+          <span class="input-label">Card Number</span>
+          <button ng-if="!paymentInfo.editCCNumber && paymentInfo.ccNumberMasked" ng-click="editCCNumber($event)" class="button button-clear button-small button-block"><div class="text-left">Saved card: {{paymentInfo.ccNumberMasked}}</div></button>
+          <input ng-if="paymentInfo.editCCNumber || !paymentInfo.ccNumberMasked" id="ccNumber" type="tel" name="ccNumber" ng-model="paymentInfo.ccNumber" cc-number cc-format ng-blur="stopEditCCNumber()" focus-if="editingCCNumber">
+        </label>
+        <div class="error-container" ng-if="(paymentInfo.editCCNumber || !paymentInfo.ccNumberMasked) && form.$submitted && form.ccNumber.$error" ng-messages="form.ccNumber.$error">
+          <div class="error" ng-message="ccNumber"><i class="ion-information-circled"></i> Invalid card number</div>
+          <div class="error" ng-message="ccNumberType"><i class="ion-information-circled"></i> Non-supported card type</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <div ng-if="paymentInfo.editCCNumber && form.ccNumber.$valid || !paymentInfo.ccNumberMasked">
+          <div>
+            <label class="item item-input item-select item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.ccExpireMonth.$invalid, 'no-errors' : form.$submitted && form.ccExpireMonth.$valid}">
+              <span class="input-label">Expiration Month</span>
+              <!--input type="text" name="ccExpireMonth" ng-model="paymentInfo.ccExpireMonth" cc-exp-month required-->
+              <select ng-model="paymentInfo.ccExpireMonth" ng-options="n for n in Range(1, 13)">
+                <!--option ng-repeat="n in [].constructor(12) track by $index" ng-value="$index+1" ng-selected="$index+1 == paymentInfo.ccExpireMonth">{{$index+1}}</option-->
+              </select>
+            </label>
+            <div class="error-container" ng-show="form.$submitted && form.ccExpireMonth.$error" ng-messages="form.ccExpireMonth.$error">
+              <div class="error" ng-message="parse, ccExpMonth"><i class="ion-information-circled"></i> Invalid expiration month</div>
+              <div ng-messages-include="error-list.html"></div>
+            </div>
+            <label class="item item-input item-select item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.ccExpireYear.$invalid, 'no-errors' : form.$submitted && form.ccExpireYear.$valid}">
+              <span class="input-label">Expiration Year</span>
+              <!--input type="text" name="ccExpireYear" ng-model="paymentInfo.ccExpireYear" cc-exp-year required-->
+              <select ng-model="paymentInfo.ccExpireYear" ng-options="n for n in Range(currentYear, currentYear+30)"></select>
+              <!--select ng-model="paymentInfo.ccExpireYear">
+                <option ng-repeat="n in [].constructor(30) track by $index" ng-value="$index+currentYear" ng-selected="$index+currentYear == paymentInfo.ccExpireYear">{{$index+currentYear}}</option>
+              </select-->
+            </label>
+            <div class="error-container" ng-show="form.$submitted && form.ccExpireYear.$error" ng-messages="form.ccExpireYear.$error">
+              <div class="error" ng-message="ccExpYear"><i class="ion-information-circled"></i> Invalid expiration year</div>
+              <div ng-messages-include="error-list.html"></div>
+            </div>
+            <div ng-show="false">
+              <input type="text" name="ccExpireMonth" ng-model="paymentInfo.ccExpireMonth" cc-exp-month required>
+              <input type="text" name="ccExpireYear" ng-model="paymentInfo.ccExpireYear" cc-exp-year full-year required>
+            </div>
+            <div class="error-container" ng-if="form.$submitted && form.ccExpireMonth.$valid && form.ccExpireYear.$valid && (paymentInfo.ccExpireYear<currentYear || paymentInfo.ccExpireYear==currentYear && paymentInfo.ccExpireMonth<currentMonth)">
+              <div class="error"><i class="ion-information-circled"></i> Invalid expiration year/month</div>
+            </div>
+          </div>
+        </div>
+        <!--label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.cvv.$invalid, 'no-errors' : form.$submitted && form.cvv.$valid}">
+          <span class="input-label">CVV</span>
+          <input type="text" name="cvv" ng-model="paymentInfo.cvv" cc-cvc cc-type="form.ccNumber.$ccType" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.cvv.$error" ng-messages="form.cvv.$error">
+          <div class="error" ng-message="cvv"><i class="ion-information-circled"></i> Invalid expiration year</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div-->
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.zipCode.$invalid, 'no-errors' : form.$submitted && form.zipCode.$valid}">
+          <span class="input-label">Zip Code</span>
+          <input type="tel" name="zipCode" ng-model="paymentInfo.zipCode" maxlength="5" pattern="[0-9]*" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.zipCode.$error" ng-messages="form.zipCode.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <button ng-click="doSubmit()" class="button button-dark button-block">Update</button>
+      </div>
+    </div>
+  </ion-content>
+  </form>
+</ion-view>

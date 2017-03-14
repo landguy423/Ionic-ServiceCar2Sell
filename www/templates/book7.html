@@ -1,0 +1,32 @@
+<ion-view id="schedule-key" view-title="Schedule" cache-view="false">
+    <ion-nav-buttons side="right">
+      <a class="button button-assertive" href="#/app/book/payment" ng-class="{'disabled':$root.bookData.callOnArrival !== true && $root.bookData.callOnArrival !== false || $root.bookData.callOnArrival === false && (!$root.bookData.whereKeyLeft || $root.bookData.whereKeyLeft.trim() == '') || $root.bookData.callOnArrival === true && isSalonSelected()}">
+      Next
+    </a>
+    </ion-nav-buttons>
+      <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">How can we get your keys?</h4>
+      <div class="list list-inset">
+        <a class="item item-body" ng-if="!isSalonSelected()" ng-click="$root.bookData.callOnArrival=true">
+          Call me on arrival to meet and pickup keys
+          <i ng-show="$root.bookData.callOnArrival === true" class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+        </a>
+        <!--a class="item item-body" ng-click="$root.bookData.callOnArrival = false; $root.bookData.whereKeyLeft='Reception Desk'">
+          Reception Desk
+          <i ng-show="$root.bookData.callOnArrival === false && $root.bookData.whereKeyLeft == 'Reception Desk'" class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+        </a-->
+        <div id="key-other" class="item item-body" ng-click="$root.bookData.callOnArrival = false;$root.bookData.whereKeyLeft=''">
+          <div>
+            Leave message regarding key pick up...
+            <i ng-show="$root.bookData.callOnArrival === false" class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+          </div>
+          <label class="item-input" ng-show="$root.bookData.callOnArrival === false">
+            <textarea ng-model="$root.bookData.whereKeyLeft" placeholder="Description of where keys will be left for pickup"></textarea>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

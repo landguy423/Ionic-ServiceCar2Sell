@@ -1,0 +1,47 @@
+<ion-view view-title="Schedule" cache-view="false">
+    <ion-nav-buttons side="right">
+        <a class="button button-assertive" ng-class="{'disabled':!scheduleDate || !scheduleTime || scheduleTime.status != 'Open' || scheduleTime.date != scheduleDate}" ng-click="onNext()">
+            Next
+        </a>
+    </ion-nav-buttons>
+
+    <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">When?</h4>
+      <div class="list list-inset">
+        <div class="item item-divider">
+          What Date?
+        </div>
+        <ionic-datepicker input-obj="datepickerObject">
+          <a class="item">
+            {{scheduleDate | date : 'fullDate'}}
+            <span class="item-note">{{scheduleDate ? "" : "Pick a date"}} &nbsp;&gt;</span>
+          </a>
+        </ionic-datepicker>
+        <div ng-if="scheduleDate && timeBlocksDate == scheduleDate">
+          <div class="item item-divider">
+            What Time?
+          </div>
+          <a class="item item-body" ng-click="selectTimeBlock()">
+            {{scheduleTime.timeRange}}
+            <span class="item-note">
+              {{scheduleTime ? "" : "Select a time range"}} &nbsp;&gt;
+            </span>
+          </a>
+          <!--a class="item item-body disabled" href="#" modal-select ng-model="scheduleTime" options="timeBlocks" modal-title="Select a time range" header-footer-class="bar-dark" hide-reset="true">
+            {{scheduleTime.timeRange}}
+            <span class="item-note">
+              {{scheduleTime ? "" : "Select a time range"}} &nbsp;&gt;
+            </span>
+            <div class="option">
+              <div ng-class="{'disabled': option.status!='Open'}">
+              {{option.timeRange}}
+              </div>
+            </div>
+          </a-->
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

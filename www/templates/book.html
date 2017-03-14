@@ -1,0 +1,23 @@
+<ion-nav-view name="bookContent"></ion-nav-view>
+<div class="tabs tabs-icon-top tabs-dark">
+  <a class="tab-item" ui-sref-active="active tab-stable" ui-sref="app.book.location">
+    <i class="icon ion-location"></i>
+    Location
+  </a>
+  <a class="tab-item" ui-sref-active="active tab-stable" ng-class="{'active tab-stable': $state.is('app.book.vehicleType')}" ui-sref="app.book.vehicle">
+    <i class="icon ion-model-s"></i>
+    Vehicle
+  </a>
+  <a class="tab-item" ui-sref-active="active tab-stable" ng-class="{'active tab-stable': $state.is('app.book.addon')}" ui-sref="app.book.service">
+    <i class="icon ion-waterdrop"></i>
+    Services
+  </a>
+  <a class="tab-item" ui-sref-active="active tab-stable" ui-sref="app.book.schedule" ng-class="{'active tab-stable': $state.is('app.book.key')}">
+    <i class="icon ion-calendar"></i>
+    Schedule
+  </a>
+  <a class="tab-item" ui-sref-active="active tab-stable" ui-sref="app.book.payment" ng-class="{'active tab-stable': $state.is('app.book.paymentDetail') || $state.is('app.book.confirm')}">
+    <i class="icon ion-card"></i>
+    Payment
+  </a>
+</div>

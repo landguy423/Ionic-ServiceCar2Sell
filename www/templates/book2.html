@@ -1,0 +1,23 @@
+<ion-view id="vehicle-type" view-title="Vehicle Size">
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="padding">
+      <h4 class="text-center">What Size Vehicle?</h4>
+      <div class="list card">
+        <a class="item item-body" ng-click="$root.bookData.vehicleType='standard'" href="#/app/book/service">
+          <h2>STANDARD</h2>
+          <i ng-show="$root.bookData.vehicleType=='standard'" class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+            <img src="img/vehicle_standard.png" class="vehicle_img">
+          <p>All passenger cars, compact trucks and small to medium SUV's. (Examples: Honda Accord, Toyota Tacoma, Audi Q5, Ford Escape, Jeep Liberty)</p>
+        </a>
+      </div>
+      <div class="list card">
+        <a class="item item-body" ng-click="$root.bookData.vehicleType='large'" href="#/app/book/service">
+          <h2>LARGE</h2>
+          <i ng-show="$root.bookData.vehicleType=='large'" class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+            <img src="img/vehicle_large.png" class="vehicle_img">
+          <p>Full size trucks, large SUV's, vans and mini vans. (Examples: Ford F150, Chevy Tahoe, Honda odyssey, Audi Q7, Ford Explorer, Jeep Wrangler (4rd))</p>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

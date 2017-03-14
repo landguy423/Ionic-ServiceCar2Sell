@@ -1,0 +1,18 @@
+/* Empty. Add your own CSS if you like */
+
+.vehicle_img {display:block !important; margin:0 auto; width:50%; }
+
+h4 {background:rgba(0,0,0,0.4); color:#FFF; margin:0; padding:10px; border-radius:4px; }
+
+.serviceList .item-note {float:none;}
+
+.item-thumbnail-left, .item-thumbnail-left .item-content {padding-top:5px;/* margin-left:10px;*/ }
+
+.serviceList .icon {margin-top:5px; }
+
+.ionic_datepicker_modal .bar-header, .ionic_datepicker_modal .bar-stable {background:#000; }
+.ionic_datepicker_modal .title {color:#FFF !important;}
+.ionic_datepicker_modal .bar.bar-stable.bar-footer {background:#ef473a; }
+.ionic_datepicker_modal .button-clear {color:#FFF !important;}
+.ionic_datepicker_modal .selected_date_full {color:#ef473a; }
+.ionic_datepicker_modal .date_selected > .date_cell {background:#ef473a; color:#FFF;}

@@ -1,0 +1,66 @@
+<ion-view view-title="My Profile" cache-view="false">
+        <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+  <form name="form" novalidate="" ng-submit="updateProfile(form)">
+  <ion-content style="background-image:url('img/greyzz.png')">
+    <div class="padding">
+      <div class="button-bar">
+        <a class="button button-dark active">Profile</a>
+        <a class="button button-dark" href="#/app/payment-info" menu-close>Payment</a>
+      </div>
+    </div>
+    <div class="padding">
+      <div class="list" style="background:#FFF;">
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.lastName.$invalid, 'no-errors' : form.$submitted && form.lastName.$valid}">
+          <span class="input-label">Last Name</span>
+          <input type="text" name="lastName" ng-model="userInfo.lastName" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.lastName.$error" ng-messages="form.lastName.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.firstName.$invalid, 'no-errors' : form.$submitted && form.firstName.$valid}">
+          <span class="input-label">First Name</span>
+          <input type="text" name="firstName" ng-model="userInfo.firstName" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.firstName.$error" ng-messages="form.firstName.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.email.$invalid, 'no-errors' : form.$submitted && form.email.$valid}">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="userInfo.email" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.email.$error" ng-messages="form.email.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.mobile.$invalid, 'no-errors' : form.$submitted && form.mobile.$valid}">
+          <span class="input-label">Mobile Phone</span>
+          <input type="tel" pattern="[-0-9]*" name="mobile" ng-model="userInfo.mobile" mask="999-999-9999" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.mobile.$error" ng-messages="form.mobile.$error">
+          <div class="error" ng-message="mask"><i class="ion-information-circled"></i> Invalid phone number</div>
+          <div class="error" ng-message="pattern"><i class="ion-information-circled"></i> Invalid phone number</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-select item-stacked-label">
+          <span class="input-label">Company</span>
+          <select name="companyId" ng-model="userInfo.companyId" required>
+            <option ng-repeat="company in companies" ng-selected="company.id == userInfo.companyId" value="{{company.id}}">{{company.name}}</option>
+          </select>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.companyId.$error" ng-messages="form.companyId.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+      </div>
+
+      <button type="submit" class="button button-block button-dark">UPDATE</button>
+
+      <a class="button button-block button-dark" href="#/app/changePassword">Change Password</a>
+
+      <a class="button button-block button-dark" href="#/app/splash" ng-click="$event.preventDefault(); signOut()" menu-close>Sign out</a>
+
+    </div>
+  </ion-content>
+  </form>
+</ion-view>

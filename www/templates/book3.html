@@ -1,0 +1,21 @@
+<ion-view id="care-options" view-title="Services" cache-view="false">
+  <ion-content class="has-footer" class="bg2" style="background-image:url('img/bg2.jpg'); background-size:cover;">
+    <div class="">
+      <h4 class="text-center">Select A Primary Service</h4>
+      <div class="list serviceList">
+        <a class="item item-dark item-thumbnail-left" ng-class="{'active': $root.bookData.careOption.id==option.id}" on-hold="option.showDesc = option.showDesc ? false : true" ng-click="$root.bookData.careOption=option" href="#/app/book/addon" ng-repeat="option in careOptions">
+          <div class="item-content">
+          <img ng-src="{{option.imgFullUrl}}">
+          {{option.name}}<br>
+          <span class="item-note">
+            ${{option.price}}
+          </span>
+          <i class="icon ion-information-circled" ng-click="$event.preventDefault(); option.showDesc = option.showDesc ? false : true"></i>
+          </div>
+          <!--i class="radio-icon ion-checkmark" ng-show="$root.bookData.careOptionId==option.id"></i-->
+          <div class="item-body" ng-show="option.showDesc" ng-bind-html="option.description"></div>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

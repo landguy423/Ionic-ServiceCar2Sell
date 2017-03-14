@@ -1,0 +1,27 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.1"
+  },
+  "dependencies": {
+    "font-awesome": "~4.4.0",
+    "ionic-modal-select": "~1.0.0",
+    "ionic-datepicker": "b26ca2ecc1",
+    "angular-moment": "~0.10.3",
+    "angular-messages": "~1.4.8",
+    "ionic": "driftyco/ionic-bower#v1.1.1",
+    "angular-resource": "~1.4.8",
+    "angular-validation-match": "~1.6.0",
+    "ng-focus-if": "~1.0.2",
+    "ngstorage": "~0.3.10",
+    "angular-credit-cards": "~2.3.5",
+    "string-natural-compare": "~1.1.1",
+    "ngMask": "angular-mask#~3.0.16",
+    "ngCordova": "^0.1.24-alpha"
+  },
+  "resolutions": {
+    "angular": "1.4.8",
+    "ionic-datepicker": "b26ca2ecc1"
+  }
+}

@@ -1,0 +1,70 @@
+<ion-view view-title="Register Account">
+  <form name="form" novalidate="" ng-submit="register(form)">
+  <ion-content style="background-image:url('img/greyzz.png')">
+
+    <div class="padding">
+      <div class="list" style="background:#FFF;">
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.firstName.$invalid, 'no-errors' : form.$submitted && form.firstName.$valid}">
+          <span class="input-label">First Name</span>
+          <input type="text" name="firstName" ng-model="userInfo.firstName" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.firstName.$error" ng-messages="form.firstName.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.lastName.$invalid, 'no-errors' : form.$submitted && form.lastName.$valid}">
+          <span class="input-label">Last Name</span>
+          <input type="text" name="lastName" ng-model="userInfo.lastName" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.lastName.$error" ng-messages="form.lastName.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-select item-stacked-label">
+          <span class="input-label">Company</span>
+          <select name="companyId" ng-model="userInfo.companyId" required>
+            <option ng-repeat="company in companies" ng-selected="company.id == userInfo.companyId" value="{{company.id}}">{{company.name}}</option>
+          </select>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.companyId.$error" ng-messages="form.companyId.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.mobile.$invalid, 'no-errors' : form.$submitted && form.mobile.$valid}">
+          <span class="input-label">Mobile Phone</span>
+          <input type="text" name="mobile" ng-model="userInfo.mobile" mask="999-999-9999" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.mobile.$error" ng-messages="form.mobile.$error">
+          <div class="error" ng-message="mask"><i class="ion-information-circled"></i> Invalid phone number</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.email.$invalid, 'no-errors' : form.$submitted && form.email.$valid}">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="userInfo.email" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.email.$error" ng-messages="form.email.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.password.$invalid, 'no-errors' : form.$submitted && form.password.$valid}">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-minlength="6" ng-model="userInfo.password" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.password.$error" ng-messages="form.password.$error">
+          <div class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your password is too short</div>
+          <div class="error" ng-message="match"><i class="ion-information-circled"></i> Your two passwords did not match</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.passwordConfirm.$invalid, 'no-errors' : form.$submitted && form.passwordConfirm.$valid}">
+          <span class="input-label">Confirm Password</span>
+          <input type="password" name="passwordConfirm" ng-model="userInfo.passwordConfirm" match="userInfo.password" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.passwordConfirm.$error" ng-messages="form.passwordConfirm.$error">
+          <div class="error" ng-message="match"><i class="ion-information-circled"></i> Your two passwords did not match</div>
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+
+      </div>
+
+      <button type="subject" class="button button-block button-dark">Register</button>
+
+    </div>
+  </ion-content>
+  </form>
+</ion-view>

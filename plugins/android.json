@@ -1,0 +1,39 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.gowashme"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.gowashme"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,29 @@
+<ion-view view-title="Sign In" cache-view="false">
+  <form name="form" novalidate="" ng-submit="signIn(form)">
+  <ion-content style="background-image:url('img/greyzz.png')">
+    <div class="padding">
+      <div class="list" style="background:#FFF;">
+
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.email.$invalid, 'no-errors' : form.$submitted && form.email.$valid}">
+          <span class="input-label">Email</span>
+          <input type="email" name="email" ng-model="signInData.email" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.email.$error" ng-messages="form.email.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+        <label class="item item-input item-stacked-label" ng-class="{ 'has-errors' : form.$submitted && form.password.$invalid, 'no-errors' : form.$submitted && form.password.$valid}">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" ng-model="signInData.password" required>
+        </label>
+        <div class="error-container" ng-show="form.$submitted && form.password.$error" ng-messages="form.password.$error">
+          <div ng-messages-include="error-list.html"></div>
+        </div>
+      </div>
+
+      <button menu-close class="button button-block button-dark" type="submit">SIGN IN</button>
+
+      <a href="#/app/forgotPassword" style="color:black; text-align:center; display:block;">Forgot Password</a>
+    </div>
+  </ion-content>
+  </form>
+</ion-view>
